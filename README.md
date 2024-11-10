@@ -1,46 +1,72 @@
-# PH HealthCare Server
+# Library Management System API
 
-Welcome to the backend repository for PH HealthCare, a tutorial project developed as part of the "Level 2 Web Development Course" offered by Programming Hero.
+## Objective
+Develop a backend API for a Library Management System to manage books, authors, memberships, and borrowing activities. This API includes CRUD operations for books, authors, members, and borrow records, along with endpoints for borrowing and returning books. UUID is used for unique identification in all tables.
 
-This repository contains the backend codebase responsible for handling server-side logic, database management, and communication between different system components.
+---
 
-<!-- ## Table of Contents
-- [PH HealthCare Backend](#ph-healthcare-backend)
-  - [Table of Contents](#table-of-contents)
-  - [Technologies Used](#technologies-used)
-  - [Features](#features)
-  - [Installation and Setup](#installation-and-setup)
-  - [Usage](#usage)
-  - [API Endpoints](#api-endpoints)
-  - [Contributing](#contributing)
-  - [License](#license) -->
+## Technologies Required
+- **Prisma ORM**
+- **Node.js**
+- **PostgreSQL**
+- **Express.js**
+- **TypeScript**
 
-<!-- ## Technologies Used
-- **Node.js**: Runtime environment for executing JavaScript code.
-- **Express.js**: Web application framework for building APIs and handling HTTP requests.
-- **Prisma**: ORM (Object-Relational Mapping) tool for database management.
-- **PostgreSQL**: Relational database management system.
-- **WEB RTC (Agora.io)**: Third-party service for real-time communication between users.
-- **JWT**: JSON Web Tokens for secure authentication and authorization.
-- **bcrypt**: Library for hashing passwords.
-- **nodemailer**: Library for sending email notifications. -->
+---
 
-<!-- ## Features
-- **User Authentication and Authorization**: Secure authentication using JWT tokens.
-- **User Management**: CRUD operations for managing user accounts (Admin, Doctor, Patient).
-- **Appointment Management**: Create, update, and delete appointments.
-- **Real-time Communication**: Integration with WEB RTC for real-time communication between doctors and patients.
-- **Prescription Management**: Create, update, and delete prescriptions.
-- **Email Notifications**: Send email notifications for appointment confirmations, invoices, and prescription delivery. -->
+## Database Schema Requirements
+Using Prisma ORM, create the following schema with UUID as the primary key:
 
-## Installation and Setup
-1. Clone this repository: `git clone <repository_url>`
-2. Install dependencies: `npm install`
-3. Set up the environment variables by creating a `.env` file and filling in the required variables based on the provided `.env.example` file.
-4. Run the database migrations: `npx prisma migrate dev`
-5. Start the server: `npm run dev`
+### 1. Book Table
+| Field           | Type   | Description                               |
+|-----------------|--------|-------------------------------------------|
+| bookId          | UUID   | Unique identifier for each book           |
+| title           | String | Title of the book                         |
+| genre           | String | Genre or category of the book             |
+| publishedYear   | Int    | Year the book was published               |
+| totalCopies     | Int    | Total copies of the book in the library   |
+| availableCopies | Int    | Number of copies currently available      |
 
+### 2. Author Table
+| Field        | Type     | Description                          |
+|--------------|----------|--------------------------------------|
+| authorId     | UUID     | Unique identifier for each author    |
+| name         | String   | Name of the author                   |
+| bio          | Text     | Short biography of the author        |
+| dateOfBirth  | DateTime | Birth date of the author             |
 
-### API Documentation: https://documenter.getpostman.com/view/26694209/2sA2xjyWRv
+### 3. Member Table
+| Field           | Type     | Description                           |
+|-----------------|----------|---------------------------------------|
+| memberId        | UUID     | Unique identifier for each member     |
+| name            | String   | Name of the library member           |
+| email           | String   | Member’s email (unique)              |
+| phone           | String   | Member’s contact number              |
+| membershipDate  | DateTime | Date the member joined the library   |
 
+### 4. BorrowRecord Table
+| Field        | Type     | Description                           |
+|--------------|----------|---------------------------------------|
+| borrowId     | UUID     | Unique identifier for each borrow record |
+| borrowDate   | DateTime | Date when the book was borrowed       |
+| returnDate   | DateTime | Date when the book was returned (nullable) |
+| bookId       | UUID     | Foreign key referencing Book          |
+| memberId     | UUID     | Foreign key referencing Member        |
 
+---
+
+## Features & Endpoints
+
+### 1. Book CRUD Operations
+
+#### Create Book
+- **Endpoint**: `POST /api/books`
+- **Request Body**:
+  ```json
+  {
+    "title": "To Kill a Mockingbird",
+    "genre": "Fiction",
+    "publishedYear": 1960,
+    "totalCopies": 10,
+    "availableCopies": 10
+  }
