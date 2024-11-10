@@ -1,22 +1,23 @@
-import express, { NextFunction, Request, Response } from 'express';
-import { AdminController } from './admin.controller';
-import validateRequest from '../../middlewares/validateRequest';
-import { adminValidationSchemas } from './admin.validations';
+import express from "express";
+import { adminControllers } from "./admin.controller";
+import validateRequest from "../../middlewares/validateRequest";
+import { adminValidationSchemas } from "./admin.validations";
 
 const router = express.Router();
 
-router.get('/', AdminController.getAllFromDB);
+router.post("/", adminControllers.createAdmin);
+router.get("/", adminControllers.getAllFromDB);
 
-router.get('/:id', AdminController.getByIdFromDB);
+router.get("/:id", adminControllers.getByIdFromDB);
 
 router.patch(
-    '/:id',
-    validateRequest(adminValidationSchemas.update),
-    AdminController.updateIntoDB
+  "/:id",
+  validateRequest(adminValidationSchemas.update),
+  adminControllers.updateIntoDB
 );
 
-router.delete('/:id', AdminController.deleteFromDB);
+router.delete("/:id", adminControllers.deleteFromDB);
 
-router.delete('/soft/:id', AdminController.softDeleteFromDB);
+router.delete("/soft/:id", adminControllers.softDeleteFromDB);
 
-export const AdminRoutes = router;
+export const adminRoutes = router;

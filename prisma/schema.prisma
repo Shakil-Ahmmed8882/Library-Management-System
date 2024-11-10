@@ -23,6 +23,7 @@ model User {
   createdAt          DateTime   @default(now())
   updatedAt          DateTime   @updatedAt
   admin              Admin?
+  Member             Member?
 
   @@map("users")
 }
@@ -40,6 +41,17 @@ model Admin {
   user User @relation(fields: [email], references: [email])
 
   @@map("admins")
+}
+
+model Member {
+  memberId String @id @default(uuid())
+  name     String
+  email    String @unique
+  phone    String
+  membershipDate  String
+  user     User   @relation(fields: [email], references: [email])
+
+  @@map("members")
 }
 
 enum UserRole {
