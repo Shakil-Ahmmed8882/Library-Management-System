@@ -44,14 +44,39 @@ model Admin {
 }
 
 model Member {
-  memberId String @id @default(uuid())
-  name     String
-  email    String @unique
-  phone    String
-  membershipDate  String
-  user     User   @relation(fields: [email], references: [email])
+  memberId       String         @id @default(uuid())
+  name           String
+  email          String         @unique
+  phone          String
+  membershipDate DateTime
+  user           User           @relation(fields: [email], references: [email])
+  BorrowRecord   BorrowRecord[]
 
   @@map("members")
+}
+
+model Book {
+  bookId          String         @id @default(uuid())
+  title           String
+  genre           String
+  publishedyear   Int
+  totalCopies     Int
+  availableCopies Int
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  BorrowRecord    BorrowRecord[]
+}
+
+model BorrowRecord {
+  borrowId   String    @id @default(uuid())
+  borrowDate DateTime
+  returnDate DateTime?
+  bookId     String
+  memberId   String
+
+  // relations 
+  book   Book   @relation(fields: [bookId], references: [bookId])
+  member Member @relation(fields: [memberId], references: [memberId])
 }
 
 enum UserRole {
