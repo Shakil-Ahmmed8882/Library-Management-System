@@ -1,6 +1,7 @@
 import { UserRole } from "@prisma/client";
 import prisma from "../../../shared/prisma";
 import bcrypt from "bcrypt";
+import { IMember } from "./member.interface";
 
 const createMember = async (data: any) => {
   const hashedPassword: string = await bcrypt.hash(data.password, 12);
@@ -26,6 +27,33 @@ const createMember = async (data: any) => {
   return result;
 };
 
+const getAllMembers = async () => {
+  const result = await prisma.member.findMany();
+  return result;
+};
+
+const getMemberById = async (memberId: string) => {
+  const result = await prisma.member.findUniqueOrThrow({ where: { memberId } });
+  return result;
+};
+
+const updateMember = async (memberId: string, payload: IMember) => {
+  const result = await prisma.member.update({
+    where: { memberId },
+    data: payload,
+  });
+  return result;
+};
+
+const deleteMember = async (memberId: string) => {
+  const result = await prisma.member.delete({ where: { memberId } });
+  return result;
+};
+
 export const memberServices = {
   createMember,
+  getAllMembers,
+  getMemberById,
+  updateMember,
+  deleteMember,
 };
