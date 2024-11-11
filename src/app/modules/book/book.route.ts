@@ -10,4 +10,15 @@ router.post(
   validateRequest(bookValidations.createBookValidationSchema),
   bookControllers.createBook
 );
+router.get("/", bookControllers.getAllBooks);
+router.get("/:bookId", bookControllers.getBookById);
+router.put(
+  "/:bookId",
+  validateRequest(bookValidations.updateBookValidationSchema),
+  bookControllers.updateBook
+);
+
+router.delete("/:bookId", bookControllers.deleteBook);
 export const bookRoutes = router;
+
+
