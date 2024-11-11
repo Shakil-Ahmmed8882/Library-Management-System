@@ -1,7 +1,7 @@
-import { UserRole } from "@prisma/client";
+import { Member, UserRole } from "@prisma/client";
 import prisma from "../../../shared/prisma";
 import bcrypt from "bcrypt";
-import { IMember } from "./member.interface";
+
 
 const createMember = async (data: any) => {
   const hashedPassword: string = await bcrypt.hash(data.password, 12);
@@ -37,7 +37,7 @@ const getMemberById = async (memberId: string) => {
   return result;
 };
 
-const updateMember = async (memberId: string, payload: IMember) => {
+const updateMember = async (memberId: string, payload: Member) => {
   const result = await prisma.member.update({
     where: { memberId },
     data: payload,

@@ -11,13 +11,18 @@ router.post(
   memberControllers.createMember
 );
 
-router.get("/", memberControllers.getAllMembers);
-router.get("/:memberId", memberControllers.getMemberById);
-router.put(
-  "/:memberId",
-  validateRequest(memberValidations.updateMemberValidationSchema),
-  memberControllers.updateMember
+router.post(
+  "/",
+  validateRequest(memberValidations.createMemberValidationSchema),
+  memberControllers.createMember
 );
 
+router.get("/", memberControllers.getAllMembers);
+
+router.get("/:memberId", memberControllers.getMemberById);
+
+router.put("/:memberId", memberControllers.updateMember);
+
 router.delete("/:memberId", memberControllers.deleteMember);
+
 export const memberRoutes = router;
