@@ -75,19 +75,21 @@ Create a PostgreSQL database and configure the .env file with your credentials:
 ```
 
 
-## Environment Variables
+                              
+                              ## Environment Variables
 
-| **Variable**                   | **Description**                              | **Value**                                                                                              |
-|---------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **`DATABASE_URL`**              | PostgreSQL connection string                 | `postgresql://user:password@hostname:5432/database_name?schema=public`                                 |
-| **`NODE_ENV`**                  | Application environment                      | `development`                                                                                           |
-| **`PORT`**                      | Server port number                           | `3000`                                                                                                  |
-| **`JWT_ACCESS_SECRET`**         | JWT access token secret                      | `your-access-token-secret-key`                                                                          |
-| **`JWT_ACCESS_EXPIRES_IN`**     | JWT access token expiry                      | `1h`                                                                                                    |
-| **`JWT_REFRESH_SECRET`**        | JWT refresh token secret                     | `your-refresh-token-secret-key`                                                                         |
-| **`JWT_REFRESH_EXPIRES_IN`**    | JWT refresh token expiry                     | `7d`                                                                                                    |
-| **`BCRYPT_SALT_ROUND`**         | Bcrypt hashing salt rounds                   | `10`                                                                                                    |
-| **`RESET_PASS_UI_LINK`**        | Password reset UI link                       | `https://yourfrontendapp.com/reset-password`                                                           |
+| **Variable**                   | **Description**                                                              | **Value**                                                                                              |
+|---------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **`DATABASE_URL`**              | PostgreSQL connection string for the database                                  | `postgresql://user:password@hostname:5432/database_name?schema=public`                                 |
+| **`NODE_ENV`**                  | Environment for the application (e.g., development, production)                | `development`                                                                                           |
+| **`PORT`**                      | Port number the server will run on                                            | `3000`                                                                                                  |
+| **`JWT_ACCESS_SECRET`**         | Secret key for JWT access token                                               | `your-access-token-secret-key`                                                                          |
+| **`JWT_ACCESS_EXPIRES_IN`**     | Expiry time for JWT access token (e.g., 1h, 7d)                               | `1h`                                                                                                    |
+| **`JWT_REFRESH_SECRET`**        | Secret key for JWT refresh token                                              | `your-refresh-token-secret-key`                                                                         |
+| **`JWT_REFRESH_EXPIRES_IN`**    | Expiry time for JWT refresh token (e.g., 1h, 7d)                              | `7d`                                                                                                    |
+| **`BCRYPT_SALT_ROUND`**         | Salt rounds for bcrypt hashing                                               | `10`                                                                                                    |
+| **`RESET_PASS_UI_LINK`**        | UI link for password reset                                                     | `https://yourfrontendapp.com/reset-password`                                                           |
+|
 
 
 
@@ -105,12 +107,14 @@ Here is the ER diagram visual representation of the Library Management System:
 
 ![ER Diagram](https://raw.githubusercontent.com/Shakil-Ahmmed8882/Library-Management-System/refs/heads/main/src/assets/diagram.png)
 
+## Conclusion
 
-## And Finally
+Building systems like the Library Management System is an incredibly rewarding journey that brings you closer to mastering modern web technologies. This project not only deepens your understanding of backend architecture and database management but also provides a practical solution that can enhance library operations.
 
-Creating systems like the Library Management System is a rewarding experience that brings you closer to mastering modern web technologies. This project not only teaches you the intricacies of backend architecture and database management but also provides a practical, real-world solution that can significantly impact library operations.
+- [Live Server](https://library-management-six-flax.vercel.app/)
 
-If you are the kind of person who wants to learn, teach, discuss ideas, and build, Feel free to connect with me on LinkedIn or Facebook. I would be glad to see you. 
+If you're passionate about learning, teaching, discussing ideas, and building, feel free to connect with me on LinkedIn or Facebook. I'd be glad to connect with you.
+
 - [LinkedIn](https://www.linkedin.com/in/shakil-ahmmed-501aaa26a/)
 - [Facebook](https://www.facebook.com/profile.php?id=100089922151860)
 
@@ -118,4 +122,5 @@ If you are the kind of person who wants to learn, teach, discuss ideas, and buil
 
 ### A Big Thank You
 
-Thank you for taking the time to explore this project. Whether contributing, learning, or browsing, your interest and dedication to growth make a difference. Keep building, and remember: the best is yet to come. 
+Thank you for exploring this project. Whether you're contributing, learning, or simply browsing, your interest and dedication make a difference. Keep building, and remember: the best is yet to come.
+
