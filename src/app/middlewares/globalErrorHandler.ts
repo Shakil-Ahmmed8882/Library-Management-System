@@ -1,39 +1,42 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 import { ErrorRequestHandler } from "express";
-import { ZodError } from "zod";
-
-// import handleDuplicateError from '../errors/handleDuplicateError';
-// import handleValidationError from '../errors/handleValidationError';
 import handleZodError from "../errors/handleZodError";
+import handlePrismaError from "../errors/handlePrismaError";
+import handleAppError from "../errors/handleAppError";
+import handleGeneralError from "../errors/handleGeneralError";
+import { ZodError } from "zod";
+import { Prisma } from "@prisma/client";
 import AppError from "../errors/appError";
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  //setting default values
   let statusCode = 500;
   let message = "Something went wrong!";
 
+  // Handle Zod validation errors
   if (err instanceof ZodError) {
     const simplifiedError = handleZodError(err);
-    statusCode = simplifiedError?.status;
-    message = simplifiedError?.message;
+    statusCode = simplifiedError.status;
+    message = simplifiedError.message;
   }
-
-  //   else if (err?.code === 11000) {
-  //     const simplifiedError = handleDuplicateError(err);
-  //     statusCode = simplifiedError?.statusCode;
-  //     message = simplifiedError?.message;
-  //     errorSources = simplifiedError?.errorSources;
-  //   }
-  
+  // Handle Prisma errors
+  else if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    const simplifiedError = handlePrismaError(err);
+    statusCode = simplifiedError.status;
+    message = simplifiedError.message;
+  }
+  // Handle custom application errors (AppError)
   else if (err instanceof AppError) {
-    statusCode = err?.statusCode;
-    message = err.message;
-  } else if (err instanceof Error) {
-    message = err.message;
+    const simplifiedError = handleAppError(err);
+    statusCode = simplifiedError.status;
+    message = simplifiedError.message;
+  }
+  // Handle general JavaScript errors (e.g., TypeError, SyntaxError)
+  else {
+    const simplifiedError = handleGeneralError(err);
+    statusCode = simplifiedError.status;
+    message = simplifiedError.message;
   }
 
-  //ultimate return
+  // Send the error response
   return res.status(statusCode).json({
     success: false,
     status: statusCode,

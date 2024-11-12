@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response) => {
     res.send({
-        Message: "Ph health care server.."
+        Message: "Library Management System is running.. "
     })
 });
 
@@ -35,3 +35,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 })
 
 export default app;
+
+

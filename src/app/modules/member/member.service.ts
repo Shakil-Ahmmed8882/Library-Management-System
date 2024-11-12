@@ -2,7 +2,6 @@ import { Member, UserRole } from "@prisma/client";
 import prisma from "../../../shared/prisma";
 import bcrypt from "bcrypt";
 
-
 const createMember = async (data: any) => {
   const hashedPassword: string = await bcrypt.hash(data.password, 12);
 

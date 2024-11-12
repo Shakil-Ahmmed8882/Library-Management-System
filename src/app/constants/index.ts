@@ -1,0 +1,11 @@
+export const USER_ROLE = {
+  SUPER_ADMIN: "SUPER_ADMIN",
+  ADMIN: "ADMIN",
+  MEMBER: "MEMBER",
+};
+
+export const USER_STATUS = {
+  ACTIVE: "ACTIVE",
+  BLOCKED: "BLOCKED",
+  DELETED: "DELETED",
+};
