@@ -59,11 +59,14 @@ To run this project locally, follow these steps:
 ### Installation Steps
 
 1. **Clone this repository**:
+   git clone 
    ```bash
-   git clone https://github.com/yourusername/Library-Management-System.git
+   https://github.com/Shakil-Ahmmed8882/Library-Management-System.git
+   ```
+   Change directory
+   ```bash
    cd Library-Management-System
-
-
+   ```
 
 ## 3. Set up your PostgreSQL database
 Create a PostgreSQL database and configure the .env file with your credentials:
@@ -72,20 +75,19 @@ Create a PostgreSQL database and configure the .env file with your credentials:
 ```
 
 
-##  Environment Variables
+## Environment Variables
 
-| **Variable**                   | **Description**                                                              | **Value**                                                                                              |
-|---------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| `DATABASE_URL`                  | PostgreSQL connection string for the database                                  | `postgresql://user:password@hostname:5432/database_name?schema=public`                                 |
-| `NODE_ENV`                      | Environment for the application (e.g., development, production)                | `development`                                                                                           |
-| `PORT`                          | Port number the server will run on                                            | `3000`                                                                                                  |
-| `JWT_ACCESS_SECRET`             | Secret key for JWT access token                                               | `your-access-token-secret-key`                                                                          |
-| `JWT_ACCESS_EXPIRES_IN`         | Expiry time for JWT access token (e.g., 1h, 7d)                               | `1h`                                                                                                    |
-| `JWT_REFRESH_SECRET`            | Secret key for JWT refresh token                                              | `your-refresh-token-secret-key`                                                                         |
-| `JWT_REFRESH_EXPIRES_IN`        | Expiry time for JWT refresh token (e.g., 1h, 7d)                              | `7d`                                                                                                    |
-| `BCRYPT_SALT_ROUND`             | Salt rounds for bcrypt hashing                                               | `10`                                                                                                    |
-| `RESET_PASS_UI_LINK`            | UI link for password reset                                                     | `https://yourfrontendapp.com/reset-password`                                                           |
-
+| **Variable**                   | **Description**                              | **Value**                                                                                              |
+|---------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **`DATABASE_URL`**              | PostgreSQL connection string                 | `postgresql://user:password@hostname:5432/database_name?schema=public`                                 |
+| **`NODE_ENV`**                  | Application environment                      | `development`                                                                                           |
+| **`PORT`**                      | Server port number                           | `3000`                                                                                                  |
+| **`JWT_ACCESS_SECRET`**         | JWT access token secret                      | `your-access-token-secret-key`                                                                          |
+| **`JWT_ACCESS_EXPIRES_IN`**     | JWT access token expiry                      | `1h`                                                                                                    |
+| **`JWT_REFRESH_SECRET`**        | JWT refresh token secret                     | `your-refresh-token-secret-key`                                                                         |
+| **`JWT_REFRESH_EXPIRES_IN`**    | JWT refresh token expiry                     | `7d`                                                                                                    |
+| **`BCRYPT_SALT_ROUND`**         | Bcrypt hashing salt rounds                   | `10`                                                                                                    |
+| **`RESET_PASS_UI_LINK`**        | Password reset UI link                       | `https://yourfrontendapp.com/reset-password`                                                           |
 
 
 
