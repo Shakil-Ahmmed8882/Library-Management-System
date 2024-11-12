@@ -101,21 +101,14 @@ npx prisma migrate dev --name init
 
 Here is the ER diagram visual representation of the Library Management System:
 
-![ER Diagram](https://i.ytimg.com/vi/1Ved3u0CpPo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD9WEAps8POgQVx3hFMx2ApoMdIjA)
+![ER Diagram](https://raw.githubusercontent.com/Shakil-Ahmmed8882/Library-Management-System/refs/heads/main/src/assets/diagram.png)
 
 
 ## And Finally
 
-Creating systems like the Library Management System is a rewarding experience that brings you closer to mastering modern web technologies. This project not only teaches you the intricacies of backend architecture and database management but also provides a practical, real-world solution that can make a significant impact in the everyday operations of libraries.
+Creating systems like the Library Management System is a rewarding experience that brings you closer to mastering modern web technologies. This project not only teaches you the intricacies of backend architecture and database management but also provides a practical, real-world solution that can significantly impact library operations.
 
-As you move forward, continue exploring, refining, and innovating. The journey of programming is endless, with each line of code a step toward improving your craft. Keep pushing boundaries, stay inspired, and always keep building!
-
----
-
-### Let's connect, learn and grow?
-
-Feel free to connect with me on LinkedIn or Facebook if you'd like to share thoughts, feedback, or just keep in touch for future collaborations:
-
+If you are the kind of person who wants to learn, teach, discuss ideas, and build, Feel free to connect with me on LinkedIn or Facebook. I would be glad to see you. 
 - [LinkedIn](https://www.linkedin.com/in/shakil-ahmmed-501aaa26a/)
 - [Facebook](https://www.facebook.com/profile.php?id=100089922151860)
 
@@ -123,4 +116,4 @@ Feel free to connect with me on LinkedIn or Facebook if you'd like to share thou
 
 ### A Big Thank You
 
-Thank you for taking the time to explore this project. Whether you're contributing, learning, or just browsing, your interest and dedication to growth make a difference. Keep building, and remember: the best is yet to come. 
+Thank you for taking the time to explore this project. Whether contributing, learning, or browsing, your interest and dedication to growth make a difference. Keep building, and remember: the best is yet to come. 
