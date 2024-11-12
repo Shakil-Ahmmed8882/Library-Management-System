@@ -69,14 +69,14 @@ model Book {
 
 model BorrowRecord {
   borrowId   String    @id @default(uuid())
-  borrowDate DateTime @default(now())
+  borrowDate DateTime  @default(now())
   returnDate DateTime?
   bookId     String
   memberId   String
 
   // relations 
-  book   Book   @relation(fields: [bookId], references: [bookId])
-  member Member @relation(fields: [memberId], references: [memberId])
+  book   Book   @relation(fields: [bookId], references: [bookId], onDelete: Cascade)
+  member Member @relation(fields: [memberId], references: [memberId], onDelete: Cascade)
 
   @@map("borrowRecords")
 }

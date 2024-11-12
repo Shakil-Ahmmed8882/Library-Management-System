@@ -14,12 +14,12 @@ const moduleRoutes = [
     route: adminRoutes,
   },
   {
-    path: "/auths",
-    route: authRoutes,
-  },
-  {
     path: "/members",
     route: memberRoutes,
+  },
+  {
+    path: "/auths",
+    route: authRoutes,
   },
   {
     path: "/books",
