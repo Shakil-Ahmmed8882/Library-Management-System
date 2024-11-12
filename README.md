@@ -1,72 +1,126 @@
-# Library Management System API
+![Library](https://www.pixel-studios.com/blog/wp-content/uploads/2018/12/012-1200x600.jpg)
 
-## Objective
-Develop a backend API for a Library Management System to manage books, authors, memberships, and borrowing activities. This API includes CRUD operations for books, authors, members, and borrow records, along with endpoints for borrowing and returning books. UUID is used for unique identification in all tables.
+Image source: [Pixel Studios](https://www.pixel-studios.com/blog/library-management-project-software-system/)
+
+
+# Library Management System
+
+## Project Overview
+The **Library Management System** is a backend API designed to manage books, members, and borrowing activities within a library. It allows staff and members to interact with the library’s resources, including managing book details, membership information, and borrowing/returning books. This project provides a clean, efficient, and scalable solution for libraries to manage their day-to-day operations.
+
+## Technology Stack
+- **Node.js**: JavaScript runtime for building the API.
+- **Express.js**: Web framework to handle HTTP requests.
+- **Prisma ORM**: To interact with the PostgreSQL database using an object-relational mapping approach.
+- **PostgreSQL**: Relational database for storing books, members, and borrow records.
+- **TypeScript**: For type safety and better development experience.
+
+## Features
+- **CRUD Operations**: Implemented for managing books and members.
+- **Borrowing System**: Allows users to borrow and return books, keeping track of the borrow records.
+- **Overdue Tracking**: Tracks overdue borrowed books based on a 14-day return policy.
+- **Error Handling**: Provides clear and structured error messages for failed operations.
+
+## Endpoints
+
+This API exposes the following key endpoints:
+
+| **Category**                    | **HTTP Method** | **Endpoint**                        | **Description**                                  |
+|----------------------------------|-----------------|-------------------------------------|--------------------------------------------------|
+| **Book Management**              | **POST**        | `/api/books`                        | Create a new book                               |
+|                                  | **GET**         | `/api/books`                        | Get a list of all books                         |
+|                                  | **GET**         | `/api/books/:bookId`                | Get details of a specific book                  |
+|                                  | **PUT**         | `/api/books/:bookId`                | Update book details                             |
+|                                  | **DELETE**      | `/api/books/:bookId`                | Delete a book                                   |
+| **Member Management**            | **POST**        | `/api/members`                      | Create a new member                             |
+|                                  | **GET**         | `/api/members`                      | Get a list of all members                       |
+|                                  | **GET**         | `/api/members/:memberId`            | Get details of a specific member                |
+|                                  | **PUT**         | `/api/members/:memberId`            | Update member details                           |
+|                                  | **DELETE**      | `/api/members/:memberId`            | Delete a member                                 |
+| **Borrowing & Returning Books**  | **POST**        | `/api/borrow`                       | Borrow a book                                   |
+|                                  | **POST**        | `/api/return`                       | Return a borrowed book                          |
+|                                  | **GET**         | `/api/borrow/overdue`               | Get a list of overdue borrowed books            |
+| **Authentication**               | **POST**        | `/api/auth/register`                | Register a new user                             |
+|                                  | **POST**        | `/api/auth/login`                   | Login with user credentials                     |
+|                                  | **POST**        | `/api/auth/logout`                  | Logout the user                                 |
+|                                  | **POST**        | `/api/auth/refresh-token`           | Refresh the authentication token                |
+| **Password Reset**               | **POST**        | `/api/auth/forgot-password`         | Request password reset                          |
+|                                  | **POST**        | `/api/auth/reset-password`          | Reset user password                             |
+
+## Local Setup and Installation
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+- **Node.js** (v14 or above)
+- **PostgreSQL** installed and running
+- **Prisma CLI** installed globally or locally
+
+### Installation Steps
+
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/yourusername/Library-Management-System.git
+   cd Library-Management-System
+
+
+
+## 3. Set up your PostgreSQL database
+Create a PostgreSQL database and configure the .env file with your credentials:
+```bash
+    DATABASE_URL="postgresql://user:password@localhost:5432/library_db?schema=public"
+```
+
+
+##  Environment Variables
+
+| **Variable**                   | **Description**                                                              | **Value**                                                                                              |
+|---------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| `DATABASE_URL`                  | PostgreSQL connection string for the database                                  | `postgresql://user:password@hostname:5432/database_name?schema=public`                                 |
+| `NODE_ENV`                      | Environment for the application (e.g., development, production)                | `development`                                                                                           |
+| `PORT`                          | Port number the server will run on                                            | `3000`                                                                                                  |
+| `JWT_ACCESS_SECRET`             | Secret key for JWT access token                                               | `your-access-token-secret-key`                                                                          |
+| `JWT_ACCESS_EXPIRES_IN`         | Expiry time for JWT access token (e.g., 1h, 7d)                               | `1h`                                                                                                    |
+| `JWT_REFRESH_SECRET`            | Secret key for JWT refresh token                                              | `your-refresh-token-secret-key`                                                                         |
+| `JWT_REFRESH_EXPIRES_IN`        | Expiry time for JWT refresh token (e.g., 1h, 7d)                              | `7d`                                                                                                    |
+| `BCRYPT_SALT_ROUND`             | Salt rounds for bcrypt hashing                                               | `10`                                                                                                    |
+| `RESET_PASS_UI_LINK`            | UI link for password reset                                                     | `https://yourfrontendapp.com/reset-password`                                                           |
+
+
+
+
+## Run Prisma migrations
+Execute the following command to set up the database schema:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+
+## ER Diagram Visual Look
+
+Here is the ER diagram visual representation of the Library Management System:
+
+![ER Diagram](https://i.ytimg.com/vi/1Ved3u0CpPo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD9WEAps8POgQVx3hFMx2ApoMdIjA)
+
+
+## And Finally
+
+Creating systems like the Library Management System is a rewarding experience that brings you closer to mastering modern web technologies. This project not only teaches you the intricacies of backend architecture and database management but also provides a practical, real-world solution that can make a significant impact in the everyday operations of libraries.
+
+As you move forward, continue exploring, refining, and innovating. The journey of programming is endless, with each line of code a step toward improving your craft. Keep pushing boundaries, stay inspired, and always keep building!
 
 ---
 
-## Technologies Required
-- **Prisma ORM**
-- **Node.js**
-- **PostgreSQL**
-- **Express.js**
-- **TypeScript**
+### Let's connect, learn and grow?
+
+Feel free to connect with me on LinkedIn or Facebook if you'd like to share thoughts, feedback, or just keep in touch for future collaborations:
+
+- [LinkedIn](https://www.linkedin.com/in/shakil-ahmmed-501aaa26a/)
+- [Facebook](https://www.facebook.com/profile.php?id=100089922151860)
 
 ---
 
-## Database Schema Requirements
-Using Prisma ORM, create the following schema with UUID as the primary key:
+### A Big Thank You
 
-### 1. Book Table
-| Field           | Type   | Description                               |
-|-----------------|--------|-------------------------------------------|
-| bookId          | UUID   | Unique identifier for each book           |
-| title           | String | Title of the book                         |
-| genre           | String | Genre or category of the book             |
-| publishedYear   | Int    | Year the book was published               |
-| totalCopies     | Int    | Total copies of the book in the library   |
-| availableCopies | Int    | Number of copies currently available      |
-
-### 2. Author Table
-| Field        | Type     | Description                          |
-|--------------|----------|--------------------------------------|
-| authorId     | UUID     | Unique identifier for each author    |
-| name         | String   | Name of the author                   |
-| bio          | Text     | Short biography of the author        |
-| dateOfBirth  | DateTime | Birth date of the author             |
-
-### 3. Member Table
-| Field           | Type     | Description                           |
-|-----------------|----------|---------------------------------------|
-| memberId        | UUID     | Unique identifier for each member     |
-| name            | String   | Name of the library member           |
-| email           | String   | Member’s email (unique)              |
-| phone           | String   | Member’s contact number              |
-| membershipDate  | DateTime | Date the member joined the library   |
-
-### 4. BorrowRecord Table
-| Field        | Type     | Description                           |
-|--------------|----------|---------------------------------------|
-| borrowId     | UUID     | Unique identifier for each borrow record |
-| borrowDate   | DateTime | Date when the book was borrowed       |
-| returnDate   | DateTime | Date when the book was returned (nullable) |
-| bookId       | UUID     | Foreign key referencing Book          |
-| memberId     | UUID     | Foreign key referencing Member        |
-
----
-
-## Features & Endpoints
-
-### 1. Book CRUD Operations
-
-#### Create Book
-- **Endpoint**: `POST /api/books`
-- **Request Body**:
-  ```json
-  {
-    "title": "To Kill a Mockingbird",
-    "genre": "Fiction",
-    "publishedYear": 1960,
-    "totalCopies": 10,
-    "availableCopies": 10
-  }
+Thank you for taking the time to explore this project. Whether you're contributing, learning, or just browsing, your interest and dedication to growth make a difference. Keep building, and remember: the best is yet to come. 
